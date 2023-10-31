@@ -13,25 +13,30 @@ public class TaxeService {
 
     public double calculerTaxe(Produit produit) {
         double taxe = 0.0;
-
         // Si le produit n'est pas exempté, ajoutez une taxe de base
-        if (!configTaxes.getCategoriesExemptees().contains(produit.getCategorie())) {
-            taxe += produit.getPrix() * configTaxes.getBase();
+        if (!this.getConfigTaxes().getCategoriesExemptees().contains(produit.getCategorie())) {
+            taxe += produit.getPrix() * this.getConfigTaxes().getBase();
         }
 
         // Si le produit est importé, ajoutez une taxe supplémentaire
         if (produit.isImporte()) {
-            taxe += produit.getPrix() * configTaxes.getImportation();
+            taxe += produit.getPrix() * this.getConfigTaxes().getImportation();
         }
-
         // Arrondi la taxe à 0,05 près
         taxe = Math.ceil(taxe * 20) / 20.0;
-
         return taxe;
     }
 
     public double getPrixTTC(Produit produit) {
         return produit.getPrix() + calculerTaxe(produit);
+    }
+
+    public ConfigTaxes getConfigTaxes() {
+        return configTaxes;
+    }
+
+    public void setConfigTaxes(ConfigTaxes configTaxes) {
+        this.configTaxes = configTaxes;
     }
 }
 

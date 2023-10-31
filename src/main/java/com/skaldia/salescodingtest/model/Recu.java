@@ -1,5 +1,6 @@
 package com.skaldia.salescodingtest.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Recu {
@@ -8,6 +9,9 @@ public class Recu {
     private double taxesTotales;
     private double total;
 
+    public Recu() {
+        this.listeDeProduits = new ArrayList<>();  // Initialisation de la liste ici
+    }
 
     // Getters & Setters
     public List<Produit> getListeDeProduits() {
@@ -34,4 +38,7 @@ public class Recu {
         this.total = total;
     }
 
+    public void ajouterProduit(Produit produit) {
+        getListeDeProduits().add(produit);
+    }
 }

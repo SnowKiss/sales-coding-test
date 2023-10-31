@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class RecuService {
@@ -36,13 +37,18 @@ public class RecuService {
 
         for (Produit produit : recu.getListeDeProduits()) {
             double prixTotalProduit = produit.getPrix() + taxeService.calculerTaxe(produit);
-            resultat.append(String.format("1 %s : %.2f\n", produit.getNom(), prixTotalProduit));
+
+            // Vérifiez si le produit est marqué comme importé
+            String prefixeImported = produit.isImporte() ? "imported " : "";
+
+            resultat.append(String.format(Locale.US,"1 %s%s : %.2f\n", prefixeImported, produit.getNom(), prixTotalProduit));
         }
 
-        resultat.append(String.format("Sales Taxes : %.2f Total : %.2f",
+        resultat.append(String.format(Locale.US,"Sales Taxes : %.2f Total : %.2f",
                 recu.getTaxesTotales(), recu.getTotal()));
 
         return resultat.toString();
     }
+
 }
 

@@ -45,4 +45,12 @@ public class Produit {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
+
+    public ConfigTaxes getConfigTaxes() {
+        return configTaxes;
+    }
+
+    public void setConfigTaxes(ConfigTaxes configTaxes) {
+        this.configTaxes = configTaxes;
+    }
 }
