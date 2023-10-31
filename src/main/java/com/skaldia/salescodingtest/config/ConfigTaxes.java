@@ -4,6 +4,7 @@ import com.skaldia.salescodingtest.model.Categorie;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -12,7 +13,8 @@ public class ConfigTaxes {
 
     private double importation;
     private double base;
-    private List<Categorie> categoriesExemptees;
+    private List<Categorie> categoriesExemptees = new ArrayList<>();
+
 
     // Getters & Setters
     public double getImportation() {
