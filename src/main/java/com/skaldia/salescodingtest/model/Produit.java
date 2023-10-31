@@ -1,11 +1,19 @@
 package com.skaldia.salescodingtest.model;
+
+import com.skaldia.salescodingtest.config.ConfigTaxes;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Produit {
+
+    @Autowired
+    private ConfigTaxes configTaxes;
 
     private String nom;
     private double prix;
     private boolean importe;
     Categorie categorie;
 
+    // Getters & Setters
     public String getNom() {
         return nom;
     }

@@ -8,6 +8,8 @@ public class Recu {
     private double taxesTotales;
     private double total;
 
+
+    // Getters & Setters
     public List<Produit> getListeDeProduits() {
         return listeDeProduits;
     }
